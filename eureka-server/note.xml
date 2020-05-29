@@ -1,0 +1,24 @@
+
+
+docker image build -t eureka-server .
+docker container run --name eureka-server -p 8090:8090 -t eureka-server
+#docker container run --name eureka-server -p 8090:8090 -d eureka-server
+#docker logs eureka-server
+docker logs -f eureka-server
+
+docker image build -t producer .
+docker container run --name producer -p 8080:8080 -t producer
+
+
+docker image build -t consumer .
+docker container run --name consumer -p 8091:8091 -d consumer
+
+
+
+docker ps
+docker stop eureka-server
+docker rm eureka-server
+docker stop producer
+docker rm producer
+docker stop consumer
+docker rm consumer

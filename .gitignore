@@ -1,0 +1,5 @@
+/.metadata/
+/consumer/target/
+/producer/target/
+/eureka-server/target/
+/zuul-server/target/
