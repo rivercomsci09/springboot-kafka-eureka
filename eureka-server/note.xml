@@ -2,12 +2,15 @@
 
 docker image build -t eureka-server .
 docker container run --name eureka-server -p 8090:8090 -t eureka-server
+#docker container run --network spring --name eureka-server -p 8090:8090 -t eureka-server
 #docker container run --name eureka-server -p 8090:8090 -d eureka-server
 #docker logs eureka-server
 docker logs -f eureka-server
 
 docker image build -t producer .
 docker container run --name producer -p 8080:8080 -t producer
+docker container run --network spring --name producer -p 8080:8080 -t producer
+######docker container run --name producer -p 8080:8080 -t --rm -e EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://172.17.0.2:8090/eureka producer
 
 
 docker image build -t consumer .
